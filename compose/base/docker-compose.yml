@@ -1,0 +1,11 @@
+version: '2'
+services:
+  ubuntu14:
+    image: ubuntu:14.04
+    entrypoint: uname -a
+  buildpack-deps:
+    image: buildpack-deps
+    entrypoint: uname -a
+  alpine:
+    image: alpine
+    entrypoint: uname -a
