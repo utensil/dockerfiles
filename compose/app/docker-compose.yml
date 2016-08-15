@@ -1,0 +1,54 @@
+version: '2'
+services:
+  ruby:
+    image: ruby
+    command: ruby -v
+  jenkins:
+    image: jenkins
+    command: bash -c '/usr/local/bin/jenkins.sh --help|grep Engine'
+  nginx:
+    image: nginx
+    command: bash -c 'nginx -v'
+  mysql:
+    image: mysql
+    command: bash -c 'mysql -V'
+  elasticsearch:
+    image: elasticsearch
+    command: bash -c "echo Elastic Search $$(/docker-entrypoint.sh --version)"
+  neo4j:
+    image: neo4j
+    command: bash -c 'cat /var/lib/neo4j/README.txt|head -n 1'
+  ros-jade:
+    image: ros:jade
+    command: bash -c 'ls /opt/ros/jade/bin|xargs'
+  julia0.4:
+    image: julialang/julia:v0.4.6
+    command: bash -c "julia -v"
+  char-cnn:
+    image: crisbal/torch-rnn:base
+    command: bash -c 'cat /root/torch-rnn/README.md|head -n 2'
+  kudu:
+    image: kunickiaj/kudu
+    command: help
+  r:
+    image: rocker/ropensci
+    command: bash -c 'R --version|head -n 3'
+  nupic:
+    image: numenta/nupic
+    TODO:
+  clojure:
+    image: cstpdk/java8-clojure-leiningen
+    TODO:
+  zanata:
+    image: zanata/server
+    command: bash -c 'ls /opt/jboss/wildfly/standalone/deployments'
+  jupyter-torch:
+    image: bethgelab/jupyter-torch:ubuntu-14.04
+    environment:
+      PYTHON_LIB_VERIFICATION: matplotlib, scipy, numpy, pandas, sklearn, seaborn, yt, patsy, sympy, statsmodels, tensorflow, h5py, leveldb, networkx, joblib, tflearn, keras
+      PYTHON_LIB_FAILED_TO_VERIFY: caffe, scikit-image
+      COMMENT_OUT: ipython2.7;ipython3;python2 -c "import $${PYTHON_LIB_VERIFICATION}" 2>&1|grep -v move;python3 -c "import $${PYTHON_LIB_VERIFICATION}" 2>&1|grep -v move;echo "Please wait...";pip list > /tmp/pip_list.txt;cat /tmp/pip_list.txt;
+    command:
+      - bash
+      - -c
+      - 'python2 -V;python3 -V;echo Jupyter `jupyter --version`;th 2>/dev/null'
