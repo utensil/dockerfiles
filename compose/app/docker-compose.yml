@@ -35,10 +35,10 @@ services:
     command: bash -c 'R --version|head -n 3'
   nupic:
     image: numenta/nupic
-    TODO:
+    command: bash -c 'python -c "import nupic;print nupic.__path__"'
   clojure:
     image: cstpdk/java8-clojure-leiningen
-    TODO:
+    command: bash -c 'clj'
   zanata:
     image: zanata/server
     command: bash -c 'ls /opt/jboss/wildfly/standalone/deployments'
