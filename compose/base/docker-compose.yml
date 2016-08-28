@@ -1,7 +1,13 @@
 version: '2'
 services:
+  centos7:
+    image: centos:7
+    entrypoint: uname -a
   ubuntu14:
     image: ubuntu:14.04
+    entrypoint: uname -a
+  ubuntu16:
+    image: ubuntu:16.04
     entrypoint: uname -a
   buildpack-deps:
     image: buildpack-deps
