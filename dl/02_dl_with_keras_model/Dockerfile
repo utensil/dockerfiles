@@ -1,4 +1,4 @@
-FROM utensil/dl_package_updated:cpu
+FROM utensil/dl:base
 
 RUN mkdir /data/
 ADD ./init.sh /data/init.sh
