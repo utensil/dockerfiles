@@ -1,4 +1,4 @@
-FROM utensil/dl:base
+FROM utensil/dl:models_notop
 
 RUN mkdir /data/
 ADD ./init.sh /data/init.sh
